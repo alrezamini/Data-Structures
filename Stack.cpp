@@ -21,7 +21,8 @@ int main(){
     obj.Push(2);
     obj.Push(3);
     obj.Push(4);
-    cout<<obj.Pop();
+    obj.Push(5);
+    obj.Print();
 }
 
 void Stack::Push(int val){
@@ -34,13 +35,18 @@ void Stack::Push(int val){
     else{top=new_node;tail=new_node;new_node->pre=NULL;}
 }
 
-/*void Stack::Print(){
-    while(tail!=NULL){
-        cout<<"\t"<<"|"<<"\t"<<tail->value<<"\t"<<"|"<<"\n";
-        tail=tail->next;
+void Stack::Print(){
+    Node *temp_top=top;
+    cout<<"\n";
+    while(temp_top->pre!=NULL){
+        cout<<"\t"<<"│"<<"\t"<<temp_top->value<<"\t"<<"│"<<"\n";
+        temp_top=temp_top->pre;
     }
+    cout<<"\t"<<"│"<<"\t"<<temp_top->value<<"\t"<<"│"<<"\n";
+    cout<<"\t"<<"─────────────────"<<"\t";
+    cout<<"\n";
 }
-*/
+
 
 int Stack::Pop(){
     Node *pre = top->pre;
