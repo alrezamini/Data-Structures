@@ -22,6 +22,8 @@ int main(){
     obj.Push(3);
     obj.Push(4);
     obj.Push(5);
+    obj.Push(12);
+    obj.Pop();
     obj.Print();
 }
 
