@@ -21,6 +21,7 @@ int main(){
     object.Enqueue(12);
     object.Enqueue(14);
     object.Enqueue(16);
+    object.Dequeue();
     object.Print();
 }
 
@@ -42,7 +43,7 @@ void Queue::Dequeue(){
         delete head;
         head=temp;
     }
-    else{cout<<"Queue Is Empty"<<endl;}
+    else{QueueStatus();}
 }
 
 void Queue::Print(){
