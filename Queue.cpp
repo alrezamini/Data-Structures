@@ -12,6 +12,7 @@ class Queue{
     public: 
         void Enqueue(int);
         void Dequeue();
+        void QueueStatus();
         void Print();
 };
 
@@ -19,9 +20,7 @@ int main(){
     Queue object;
     object.Enqueue(12);
     object.Enqueue(14);
-    object.Enqueue(15);
     object.Enqueue(16);
-    object.Dequeue();
     object.Print();
 }
 
@@ -47,6 +46,14 @@ void Queue::Dequeue(){
 }
 
 void Queue::Print(){
-    cout<<"Front Of The Queue Is : "<<head->value<<endl;
-    cout<<"Rear Of The Queue Is : "<<tail->value<<endl;
+    if(head!=NULL){
+        cout<<"Front Of The Queue Is : "<<head->value<<endl;
+        cout<<"Rear Of The Queue Is : "<<tail->value<<endl;
+    }
+    QueueStatus();
+}
+
+void Queue::QueueStatus(){
+    string result=(head!=NULL)?"Queue Is Not Empty":"Queue Is Empty";
+    cout<<result<<endl; 
 }
