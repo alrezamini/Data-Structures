@@ -42,7 +42,7 @@ void Queue::Dequeue(){
         delete head;
         head=temp;
     }
-    else{cout<<"Queue Is Empty"<<endl;}
+    QueueStatus();
 }
 
 void Queue::Print(){
