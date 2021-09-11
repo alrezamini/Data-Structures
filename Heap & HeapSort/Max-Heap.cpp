@@ -26,9 +26,11 @@ int main(){
     object.Add(19);
     object.Add(2);
     object.Print();
+    cout<<"Heap Sort : "<<endl;
     for(int x=0;x<8;x++){
         cout<<object.HeapSort()<<"\t";
     }
+    cout<<endl;
 }
 
 void MaxHeap::CreateArray(int size){
