@@ -1,6 +1,8 @@
 #include<iostream>
 using namespace std;
 
+// Max Heap Is As Same As Min Heap
+
 class MaxHeap{
     private:int *array;int inc=0;int array_size;
     public:
@@ -14,7 +16,7 @@ class MaxHeap{
 
 int main(){
     MaxHeap object;
-    object.CreateArray(10);
+    object.CreateArray(8);
     object.Add(12);
     object.Add(8);
     object.Add(15);
@@ -24,8 +26,9 @@ int main(){
     object.Add(19);
     object.Add(2);
     object.Print();
-    int num = object.HeapSort();
-    cout<<"The Maximum Number In Heap Array : "<<num<<endl;
+    for(int x=0;x<8;x++){
+        cout<<object.HeapSort()<<"\t";
+    }
 }
 
 void MaxHeap::CreateArray(int size){
@@ -65,6 +68,7 @@ int MaxHeap::HeapSort(){
     *(array+0)=*(array+(inc-1));
     *(array+(inc-1))=temp_root;
     inc--;
+    if(inc==-2){return 0;}
 
     int temp_inc=0;
     while( (2*temp_inc+1)<=(inc-1) && *(array+temp_inc)<*(array+(2*temp_inc+1)) ){
