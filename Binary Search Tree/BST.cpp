@@ -1,39 +1,38 @@
 #include<iostream>
+#include"Explicit-Stack.h"
 using namespace std;
 
 // Binary Search Tree
 
-class Node{
-    friend class BST;
-    private:int value;Node *left=NULL;Node *right=NULL;
-    public:Node(int val){value=val;}
-};
-
 class BST{
-    private:Node *root=NULL;
+    public:BSTnode *root=NULL;Stack stobject;
     public:
         int Add(int);
-        string Check(Node *,Node *);
-        void Recursive(Node *,Node *);
+        string Check(BSTnode *,BSTnode *);
+        void Recursive(BSTnode *,BSTnode *);
         int ReturnMax();
         int ReturnMin();
         void Search(int);
+        void Inorder(BSTnode *);
 };
 
 int main(){
     BST object;
-    object.Add(9);
-    object.Add(7);
-    object.Add(8);
-    object.Add(4);
-    object.Add(5);
+    object.Add(100);object.Add(98);
+    object.Add(150);object.Add(95);
+    object.Add(99);object.Add(149);
+    object.Add(151);object.Add(92);
+    object.Add(140);object.Add(139);
+    object.Add(142);
     cout<<"Maximum Number In BST : "<<object.ReturnMax()<<endl;
     cout<<"Minimum Number In BST : "<<object.ReturnMin()<<endl;
     object.Search(5);
+    cout<<"Inorder Traversal (Sort) : "<<endl;
+    object.Inorder(object.root);
 }
 
 int BST::Add(int val){
-    Node *new_node=new Node(val);
+    BSTnode *new_node=new BSTnode(val);
     if(root!=NULL){
         Recursive(root,new_node);
     }
@@ -41,8 +40,8 @@ int BST::Add(int val){
 
 }
 
-void BST::Recursive(Node *r,Node *c){
-    Node *temp_r=r;
+void BST::Recursive(BSTnode *r,BSTnode *c){
+    BSTnode *temp_r=r;
     if(c->value>temp_r->value){
         if(temp_r->right==NULL){
             r->right=c;
@@ -60,7 +59,7 @@ void BST::Recursive(Node *r,Node *c){
 }
 
 int BST::ReturnMax(){
-    Node *temp=root;
+    BSTnode *temp=root;
     while(temp->right!=NULL){
         temp=temp->right;
     }
@@ -68,7 +67,7 @@ int BST::ReturnMax(){
 }
 
 int BST::ReturnMin(){
-    Node *temp=root;
+    BSTnode *temp=root;
     while(temp->left!=NULL){
         temp=temp->left;
     }
@@ -76,7 +75,7 @@ int BST::ReturnMin(){
 }
 
 void BST::Search(int val){
-    Node *temp=root;
+    BSTnode *temp=root;
     string path;
     while(temp!=NULL){
         if(val==temp->value){cout<<"Your Number Found , The Path Is : "<<path<<endl;return;}
@@ -88,4 +87,17 @@ void BST::Search(int val){
         else{temp=temp->left;path+="->Left";continue;}
     }
     cout<<"Your Number Not Found !"<<endl;
+}
+
+void BST::Inorder(BSTnode *r){
+    BSTnode *temp=r;
+    for(temp;temp!=NULL;temp=temp->left){
+        stobject.Push(temp);
+    }
+    while(stobject.CheckStatus()=="not_empty"){
+        BSTnode *b=stobject.Pop();
+        cout<<b->value<<"  ";
+        if(b->right!=NULL){Inorder(b->right);}
+        else{continue;}
+    }
 }
