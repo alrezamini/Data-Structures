@@ -26,7 +26,7 @@ int main(){
     object.Add(142);
     cout<<"Maximum Number In BST : "<<object.ReturnMax()<<endl;
     cout<<"Minimum Number In BST : "<<object.ReturnMin()<<endl;
-    object.Search(5);
+    object.Search(142);
     cout<<"Inorder Traversal (Sort) : "<<endl;
     object.Inorder(object.root);
 }
