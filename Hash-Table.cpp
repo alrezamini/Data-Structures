@@ -14,7 +14,7 @@ class HashTable{
     Node *array=new Node[10];
     public:
         void Hash(int);        // Insert Your Value To Get The Key
-        int Print(int val);
+        int ShowHash(int val);
 };
 
 int main(){
@@ -22,8 +22,11 @@ int main(){
     obj.Hash(15);       // ِYour Value = Your Key % 10
     obj.Hash(35);       // ِYour Value = Your Key % 10
     obj.Hash(11);
+    obj.Hash(105);
+    obj.Hash(125);
+    obj.Hash(265);
     obj.Hash(1);
-    obj.Print(12);
+    obj.ShowHash(35);
 }
 
 void HashTable::Hash(int val){
@@ -34,20 +37,20 @@ void HashTable::Hash(int val){
         for(temp_array;temp_array->next!=NULL;temp_array=temp_array->next){
             continue;
         }
-        array[result].next=new Node(val);
+        temp_array->next=new Node(val);
     }
     else{array[result]=Node(val);}
 }
 
-int HashTable::Print(int val){
+int HashTable::ShowHash(int val){
     int cell = val%10;
     if(array[cell].value==0){cout<<"Your Hashed Key Not Found"<<endl;return 0;}
     if(array[cell].next==NULL){cout<<"Your Hashed Key Is "<<array[cell].value<<endl;return 0;}
     else{
-        cout<<"Your Hashed Key Is "<<cell<<"     ->  "<<array[cell].value<<"  ";
+        cout<<"Your Hashed Key Is "<<cell<<"   "<<array[cell].value;
         Node *temp_array=array[cell].next;
         while(temp_array!=NULL){
-            cout<<"  ->  "<<temp_array->value<<"  ";
+            cout<<"-->"<<temp_array->value;
             temp_array=temp_array->next;
         }
     }
