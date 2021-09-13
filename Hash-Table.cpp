@@ -1,7 +1,7 @@
 #include<iostream>
 using namespace std;
 
-// Chaining Technique In Hash Table
+// Using Chaining Method In Hashing In Order To Avoid Collision
 
 class Node{
     friend class HashTable;
